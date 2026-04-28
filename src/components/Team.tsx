@@ -1,5 +1,7 @@
 import React from "react";
-import { motion } from "motion/react";
+import { motion } from "framer-motion";
+import Tilt from "react-parallax-tilt";
+import { Linkedin, Mail } from "lucide-react";
 
 const TeamMember = ({
   name,
@@ -19,27 +21,56 @@ const TeamMember = ({
     whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true }}
     transition={{ duration: 0.5, delay: index * 0.15 }}
-    className="bg-surface-container-lowest p-8 rounded-2xl border border-surface-container-highest shadow-sm text-center hover:shadow-md transition-shadow"
+    className="h-full"
   >
-    <div className="w-32 h-32 mx-auto mb-6 rounded-full overflow-hidden border-4 border-surface-container-low shadow-sm">
-      <img
-        src={image}
-        alt={name}
-        className="w-full h-full object-cover"
-        referrerPolicy="no-referrer"
-      />
-    </div>
-    <h3 className="font-display font-bold text-xl text-on-surface mb-1">
-      {name}
-    </h3>
-    <p className="text-primary font-medium text-sm mb-4">{role}</p>
-    <p className="text-on-surface-variant text-sm leading-relaxed">{bio}</p>
+    <Tilt
+      perspective={1000}
+      tiltMaxAngleX={8}
+      tiltMaxAngleY={8}
+      scale={1.03}
+      glareEnable={true}
+      glareMaxOpacity={0.1}
+      glareColor="#ffffff"
+      glareBorderRadius="1rem"
+      className="h-full"
+    >
+      <div className="bg-white p-8 rounded-2xl border border-slate-100 shadow-sm text-center h-full flex flex-col items-center hover:shadow-xl transition-all group">
+        {/* Avatar with Glow Effect */}
+        <div className="relative w-32 h-32 mb-6">
+          <div className="absolute inset-0 bg-emerald-500/20 rounded-full blur-xl group-hover:bg-emerald-500/40 transition-colors" />
+          <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-white shadow-lg ring-1 ring-slate-100">
+            <img
+              src={image}
+              alt={name}
+              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+              referrerPolicy="no-referrer"
+            />
+          </div>
+        </div>
+
+        <h3 className="font-bold text-xl text-slate-900 mb-1">{name}</h3>
+        <p className="text-emerald-600 font-semibold text-sm mb-4 uppercase tracking-wider">
+          {role}
+        </p>
+        <p className="text-slate-500 text-sm leading-relaxed mb-6">{bio}</p>
+
+        {/* Social Actions */}
+        <div className="mt-auto flex gap-3">
+          <button className="p-2 rounded-full bg-slate-50 text-slate-400 hover:text-emerald-600 hover:bg-emerald-50 transition-colors">
+            <Linkedin size={18} />
+          </button>
+          <button className="p-2 rounded-full bg-slate-50 text-slate-400 hover:text-emerald-600 hover:bg-emerald-50 transition-colors">
+            <Mail size={18} />
+          </button>
+        </div>
+      </div>
+    </Tilt>
   </motion.div>
 );
 
 export const Team = () => {
   return (
-    <section id="team" className="py-24 bg-surface-container-lowest">
+    <section id="team" className="py-24 bg-slate-50/30">
       <div className="max-w-7xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -47,10 +78,13 @@ export const Team = () => {
           viewport={{ once: true }}
           className="text-center mb-16 space-y-4"
         >
-          <h2 className="font-display text-4xl md:text-5xl font-bold text-on-surface">
+          <span className="text-emerald-600 font-bold tracking-widest uppercase text-xs">
+            Our Leadership
+          </span>
+          <h2 className="text-4xl md:text-5xl font-bold text-slate-900">
             Guided by Experience
           </h2>
-          <p className="text-on-surface-variant max-w-2xl mx-auto text-lg">
+          <p className="text-slate-500 max-w-2xl mx-auto text-lg">
             Meet the experts leading our mission to facilitate business success
             in Ethiopia.
           </p>

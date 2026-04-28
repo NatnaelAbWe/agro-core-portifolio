@@ -69,8 +69,15 @@ export const Navbar = ({
             >
               {theme === "light" ? <Moon size={20} /> : <Sun size={20} />}
             </button>
-            <button className="hidden md:inline-flex items-center justify-center px-6 py-2.5 bg-primary text-on-primary font-medium text-sm rounded-full shadow-lg shadow-primary/20 hover:bg-primary-container transition-all active:scale-95">
-              Get Started
+            <button
+              onClick={() =>
+                document
+                  .getElementById("work-with-us")
+                  ?.scrollIntoView({ behavior: "smooth" })
+              }
+              className="hidden md:inline-flex items-center justify-center px-6 py-2.5 bg-primary text-on-primary font-medium text-sm rounded-full shadow-lg shadow-primary/20 hover:bg-primary-container transition-all active:scale-95"
+            >
+              Get In Touch
             </button>
             <button
               className="md:hidden p-2 text-primary"

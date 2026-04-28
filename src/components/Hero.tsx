@@ -1,104 +1,90 @@
 import React from "react";
 import { motion } from "motion/react";
-import { TrendingUp, ShieldCheck } from "lucide-react";
+import Tilt from "react-parallax-tilt"; // Import the tilt component
+import { ArrowRight } from "lucide-react";
 import heroImage from "../assets/images/ethiopian_agriculture_hero_1777359892972.png";
 
 export const Hero = () => {
   return (
     <section
       id="home"
-      className="relative min-h-[90vh] flex items-center pt-32 pb-20 overflow-hidden"
+      className="relative min-h-[90vh] flex items-center pt-20 overflow-hidden bg-white"
     >
-      <motion.div
-        initial={{ opacity: 0, x: 100 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 1.5, ease: "easeOut" }}
-        className="absolute top-0 right-0 w-1/2 h-full bg-surface-container-low/50 -skew-x-12 translate-x-1/4 -z-10"
-      />
+      {/* Background soft glow */}
+      <div className="absolute top-0 right-0 w-1/2 h-full bg-emerald-50/20 -z-10" />
 
-      <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
-        <div className="space-y-8">
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 bg-primary-container/10 text-primary text-sm font-semibold rounded-full border border-primary/20"
-          >
-            <TrendingUp size={16} />
-            <span>Addis Ababa, Ethiopia</span>
-          </motion.div>
+      {/* Background Swoosh */}
+      <div className="hidden lg:block absolute right-0 top-0 bottom-0 w-[45%] bg-emerald-600 rounded-l-[100%] translate-x-1/4 -z-10 opacity-5" />
 
-          <motion.h1
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.7, delay: 0.2 }}
-            className="font-display text-5xl md:text-6xl lg:text-7xl font-bold text-on-surface leading-[1.1] tracking-tight"
-          >
-            Business & Regulatory{" "}
-            <span className="text-primary">Support in Ethiopia</span>
+      <div className="max-w-[1400px] mx-auto px-6 w-full grid lg:grid-cols-[1fr_1.3fr] gap-12 items-center">
+        {/* Left Side: Text Content */}
+        <div className="z-10 py-12">
+          {/* ... (Keep your existing text content and motion.h1 here) ... */}
+          <motion.h1 className="text-5xl lg:text-7xl font-bold text-emerald-900 leading-[1.1] mb-8 tracking-tight">
+            Your Partner in <br />
+            <span className="text-emerald-800">Business Growth</span> <br />
+            in Ethiopia
           </motion.h1>
-
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.7, delay: 0.4 }}
-            className="text-lg md:text-xl text-on-surface-variant leading-relaxed max-w-xl"
-          >
-            Navigating the Ethiopian business landscape with precision. We
-            provide expert guidance in company establishment, regulatory
-            compliance, and market entry strategies.
+          <motion.p className="text-xl text-slate-600 mb-10 max-w-lg">
+            We provide professional support for company registration,
+            compliance, and business development.
           </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.6 }}
-            className="flex flex-wrap gap-4"
+          <button
+            className="px-10 py-4 bg-emerald-700 text-white text-lg font-semibold rounded-full hover:bg-emerald-800 transition-all flex items-center gap-4 group shadow-xl"
+            onClick={() =>
+              document
+                .getElementById("work-with-us")
+                ?.scrollIntoView({ behavior: "smooth" })
+            }
           >
-            <button className="px-8 py-4 bg-primary text-on-primary font-bold rounded-full shadow-xl shadow-primary/20 hover:bg-primary-container transition-all hover:scale-105 active:scale-95">
-              Consult With Us
-            </button>
-            <button className="px-8 py-4 bg-surface-container-highest text-on-surface font-bold rounded-full hover:bg-surface-container-high transition-all">
-              Explore Services
-            </button>
-          </motion.div>
+            Get in Touch
+            <ArrowRight size={20} />
+          </button>
         </div>
 
+        {/* Right Side: Enhanced Tilt Image */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.8, rotate: 2 }}
-          animate={{ opacity: 1, scale: 1, rotate: 0 }}
-          transition={{ duration: 0.8, delay: 0.3, ease: "backOut" }}
-          className="relative lg:block hidden"
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1 }}
+          className="relative"
         >
-          <div className="relative rounded-[2rem] overflow-hidden shadow-2xl border-8 border-surface-container-lowest">
-            <img
-              src={heroImage}
-              alt="Ethiopian Agriculture"
-              className="w-full aspect-[4/5] object-cover"
-              referrerPolicy="no-referrer"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-on-surface/40 to-transparent" />
-          </div>
-          {/* Floating Badge */}
-          <motion.div
-            initial={{ opacity: 0, y: 40, x: -20 }}
-            animate={{ opacity: 1, y: 0, x: 0 }}
-            transition={{ duration: 0.6, delay: 1 }}
-            className="absolute -bottom-10 -left-10 p-6 bg-surface-container-lowest rounded-2xl shadow-2xl border border-surface-container-highest max-w-[240px]"
+          <Tilt
+            perspective={1500}
+            glareEnable={true}
+            glareMaxOpacity={0.3}
+            glareColor="#ffffff"
+            glarePosition="all"
+            glareBorderRadius="15rem 4rem 4rem 15rem" // Matches image corners
+            tiltMaxAngleX={6}
+            tiltMaxAngleY={6}
+            scale={1.02} // Subtle lift on hover
+            className="parallax-effect"
           >
-            <div className="flex items-center gap-3 mb-2">
-              <div className="p-2 bg-primary/10 rounded-lg text-primary">
-                <ShieldCheck size={20} />
-              </div>
-              <span className="font-bold text-sm text-on-surface">
-                Reliable Support
-              </span>
+            {/* The Improved Image Container */}
+            <div
+              className="relative w-full h-[500px] lg:h-[750px] rounded-[3rem] lg:rounded-l-[15rem] lg:rounded-r-[4rem] overflow-hidden 
+              border-[1px] border-white/30 ring-1 ring-emerald-900/10
+              shadow-[0_40px_80px_-15px_rgba(6,78,59,0.15),0_15px_25px_rgba(0,0,0,0.05)]
+              before:absolute before:inset-0 before:rounded-inherit before:border-l-[12px] before:border-emerald-600 before:z-20 before:opacity-90 before:pointer-events-none"
+            >
+              <img
+                src={heroImage}
+                alt="Ethiopia Business"
+                className="w-full h-full object-cover"
+              />
+
+              {/* Bottom depth overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-emerald-950/30 via-transparent to-transparent pointer-events-none" />
             </div>
-            <p className="text-xs text-on-surface-variant">
-              Authoritative support for international enterprises establishing
-              in Ethiopia.
-            </p>
-          </motion.div>
+          </Tilt>
+
+          {/* Floating Decorative Element (Moves with a different motion speed) */}
+          <motion.div
+            animate={{ y: [0, -20, 0] }}
+            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute -bottom-10 -left-10 w-40 h-40 bg-emerald-100/50 rounded-full blur-3xl -z-10"
+          />
         </motion.div>
       </div>
     </section>

@@ -10,17 +10,18 @@ import {
 
 export const Footer = () => {
   return (
-    <footer className="bg-surface-container-lowest border-t border-surface-container-highest py-20">
+    <footer className="bg-white border-t border-slate-100 py-20">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+        <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-12 mb-16">
+          {/* Company Info */}
           <div className="space-y-6">
             <div className="flex items-center gap-2">
-              <Leaf className="w-8 h-8 text-primary" />
-              <span className="font-display font-bold text-2xl tracking-tight text-primary">
-                Agrocore
+              <Leaf className="w-8 h-8 text-emerald-600" />
+              <span className="font-bold text-2xl tracking-tight text-slate-900">
+                Agrocore Solutions
               </span>
             </div>
-            <p className="text-on-surface-variant text-sm leading-relaxed">
+            <p className="text-slate-500 text-sm leading-relaxed max-w-sm">
               Empowering business growth and ensuring regulatory compliance for
               local and international enterprises in Ethiopia.
             </p>
@@ -34,7 +35,7 @@ export const Footer = () => {
                 <button
                   key={i}
                   aria-label={social.label}
-                  className="w-10 h-10 rounded-full border border-surface-container-highest flex items-center justify-center text-on-surface-variant hover:text-primary hover:border-primary transition-all"
+                  className="w-10 h-10 rounded-full border border-slate-200 flex items-center justify-center text-slate-400 hover:text-emerald-600 hover:border-emerald-600 transition-all"
                 >
                   <social.icon size={18} />
                 </button>
@@ -42,15 +43,16 @@ export const Footer = () => {
             </div>
           </div>
 
-          <div>
-            <h4 className="font-bold text-on-surface mb-6 uppercase tracking-widest text-xs">
+          {/* Quick Links Only */}
+          <div className="lg:justify-self-end">
+            <h4 className="font-bold text-slate-900 mb-6 uppercase tracking-widest text-xs">
               Quick Links
             </h4>
-            <ul className="space-y-4 text-sm text-on-surface-variant font-medium">
+            <ul className="space-y-4 text-sm text-slate-600 font-medium">
               <li>
                 <a
                   href="#home"
-                  className="hover:text-primary transition-colors"
+                  className="hover:text-emerald-600 transition-colors"
                 >
                   Home
                 </a>
@@ -58,7 +60,7 @@ export const Footer = () => {
               <li>
                 <a
                   href="#services"
-                  className="hover:text-primary transition-colors"
+                  className="hover:text-emerald-600 transition-colors"
                 >
                   Services
                 </a>
@@ -66,7 +68,7 @@ export const Footer = () => {
               <li>
                 <a
                   href="#strengths"
-                  className="hover:text-primary transition-colors"
+                  className="hover:text-emerald-600 transition-colors"
                 >
                   Strengths
                 </a>
@@ -74,73 +76,23 @@ export const Footer = () => {
               <li>
                 <a
                   href="#team"
-                  className="hover:text-primary transition-colors"
+                  className="hover:text-emerald-600 transition-colors"
                 >
                   Team
                 </a>
               </li>
             </ul>
           </div>
-
-          <div>
-            <h4 className="font-bold text-on-surface mb-6 uppercase tracking-widest text-xs">
-              Legal
-            </h4>
-            <ul className="space-y-4 text-sm text-on-surface-variant font-medium">
-              <li>
-                <a href="#" className="hover:text-primary transition-colors">
-                  Privacy Policy
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-primary transition-colors">
-                  Terms of Service
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-primary transition-colors">
-                  Governance
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-primary transition-colors">
-                  Compliance
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="font-bold text-on-surface mb-6 uppercase tracking-widest text-xs">
-              Market Insights
-            </h4>
-            <ul className="space-y-4 text-sm text-on-surface-variant font-medium">
-              <li>
-                <a href="#" className="hover:text-primary transition-colors">
-                  Ethiopian Market Report 2026
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-primary transition-colors">
-                  Regulatory Landscape Overview
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-primary transition-colors">
-                  Sector Opportunities
-                </a>
-              </li>
-            </ul>
-          </div>
         </div>
 
-        <div className="pt-8 border-t border-surface-container-highest flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] uppercase font-bold tracking-widest text-on-surface-variant/50">
+        {/* Bottom Bar */}
+        <div className="pt-8 border-t border-slate-100 flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] uppercase font-bold tracking-widest text-slate-400">
           <p>© 2026 Agrocore Solutions PLC. Registered in Addis Ababa.</p>
           <div className="flex gap-6 items-center">
             <span className="flex items-center gap-1">
               <LinkIcon size={10} /> info@agrocore.et
             </span>
-            <span className="w-1 h-1 bg-primary rounded-full" />
+            <span className="w-1.5 h-1.5 bg-emerald-600 rounded-full" />
             <span>Built for scale</span>
           </div>
         </div>
