@@ -1,10 +1,27 @@
 import React from "react";
-import { motion } from "motion/react";
-import { Gavel, ClipboardList, Building2, TrendingUp } from "lucide-react";
+import { motion } from "framer-motion"; // Note: Ensure you're using 'framer-motion'
+import {
+  Gavel,
+  ClipboardList,
+  Building2,
+  TrendingUp,
+  LucideIcon,
+} from "lucide-react";
+
+// Import paths - Ensure these files exist exactly as named in: src/assets/images/
 import agentRepImg from "../assets/images/agent_rep_service_1777359911051.png";
 import regMgmtImg from "../assets/images/reg_mgmt_service_1777359929502.png";
 import stratConsultImg from "../assets/images/strat_consult_service_1777359945405.png";
 import marketResearchImg from "../assets/images/market_research_service_1777359962091.png";
+
+interface ServiceCardProps {
+  icon: LucideIcon; // Changed from 'any' for better type safety
+  title: string;
+  description: string;
+  image?: string;
+  size?: "small" | "large";
+  index?: number;
+}
 
 const ServiceCard = ({
   icon: Icon,
@@ -13,40 +30,43 @@ const ServiceCard = ({
   image,
   size = "small",
   index = 0,
-}: {
-  icon: any;
-  title: string;
-  description: string;
-  image?: string;
-  size?: "small" | "large";
-  index?: number;
-}) => (
+}: ServiceCardProps) => (
   <motion.div
     initial={{ opacity: 0, y: 30 }}
     whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true }}
     transition={{ duration: 0.5, delay: index * 0.1 }}
-    className={`group overflow-hidden bg-surface-container-lowest rounded-2xl border border-surface-container-highest shadow-sm transition-all hover:shadow-xl hover:-translate-y-1 flex flex-col ${size === "large" ? "md:col-span-2 md:row-span-2" : ""}`}
+    className={`group overflow-hidden bg-surface-container-lowest rounded-2xl border border-surface-container-highest shadow-sm transition-all hover:shadow-xl hover:-translate-y-1 flex flex-col ${
+      size === "large" ? "md:col-span-2 md:row-span-2" : ""
+    }`}
   >
     <div
-      className={`relative overflow-hidden ${size === "large" ? "h-64 md:h-full md:max-h-[60%]" : "h-48"}`}
+      className={`relative overflow-hidden ${
+        size === "large" ? "h-64 md:h-full md:max-h-[60%]" : "h-48"
+      }`}
     >
-      <img
-        src={image}
-        alt={title}
-        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-        referrerPolicy="no-referrer"
-      />
+      {image && (
+        <img
+          src={image}
+          alt={title}
+          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+          referrerPolicy="no-referrer"
+        />
+      )}
       <div className="absolute inset-0 bg-gradient-to-t from-surface-container-lowest via-transparent to-transparent" />
       <div
-        className={`absolute bottom-4 left-6 flex items-center justify-center rounded-2xl bg-primary shadow-lg shadow-primary/20 text-on-primary ${size === "large" ? "w-14 h-14" : "w-12 h-12"}`}
+        className={`absolute bottom-4 left-6 flex items-center justify-center rounded-2xl bg-primary shadow-lg shadow-primary/20 text-on-primary ${
+          size === "large" ? "w-14 h-14" : "w-12 h-12"
+        }`}
       >
         <Icon size={size === "large" ? 28 : 24} />
       </div>
     </div>
     <div className="p-8 flex-grow flex flex-col justify-center">
       <h3
-        className={`font-display font-bold text-on-surface mb-3 ${size === "large" ? "text-2xl" : "text-xl"}`}
+        className={`font-display font-bold text-on-surface mb-3 ${
+          size === "large" ? "text-2xl" : "text-xl"
+        }`}
       >
         {title}
       </h3>
@@ -62,8 +82,9 @@ export const Services = () => {
     <section id="services" className="py-24 bg-surface-container-low/30">
       <div className="max-w-7xl mx-auto px-6">
         <motion.div
-          initial={{ opacity: 0, s: 0.95 }}
-          whileInView={{ opacity: 1, s: 1 }}
+          // FIXED: Changed 's' to 'scale'
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           className="text-center mb-16 space-y-4"
         >
@@ -83,7 +104,7 @@ export const Services = () => {
             icon={Gavel}
             image={stratConsultImg}
             title="Regulatory Representation"
-            description="Acting as your legal representative before Ethiopian government authorities, ensuring full compliance with national regulations and standards. We handle the complexities so you can focus on growth."
+            description="Acting as your legal representative before Ethiopian government authorities, ensuring full compliance with national regulations and standards."
           />
           <ServiceCard
             index={1}
@@ -97,14 +118,14 @@ export const Services = () => {
             icon={Building2}
             image={agentRepImg}
             title="Company Establishment"
-            description="Streamlined processes for incorporating your business, obtaining TINs, and setting up physical or virtual operations."
+            description="Streamlined processes for incorporating your business, obtaining TINs, and setting up operations."
           />
           <ServiceCard
             index={3}
             icon={TrendingUp}
             image={marketResearchImg}
             title="Marketing Support"
-            description="Strategic market entry research, localization of marketing materials, and brand positioning for the local sector."
+            description="Strategic market entry research, localization of marketing materials, and brand positioning."
           />
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
