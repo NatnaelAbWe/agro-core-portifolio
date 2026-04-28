@@ -75,16 +75,6 @@ export default function App() {
       </main>
 
       <Footer />
-
-      {/* Floating Chat Button */}
-      <motion.button
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.9 }}
-        className="fixed bottom-8 right-8 w-16 h-16 bg-[#25D366] text-white rounded-full flex items-center justify-center shadow-2xl z-50 transition-transform active:scale-90"
-        aria-label="Contact on WhatsApp"
-      >
-        <MessageCircle size={32} />
-      </motion.button>
     </div>
   );
 }
