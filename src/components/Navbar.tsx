@@ -77,7 +77,7 @@ export const Navbar = ({
               }
               className="hidden md:inline-flex items-center justify-center px-6 py-2.5 bg-primary text-on-primary font-medium text-sm rounded-full shadow-lg shadow-primary/20 hover:bg-primary-container transition-all active:scale-95"
             >
-              Get In Touch
+              Get Consultation
             </button>
             <button
               className="md:hidden p-2 text-primary"
