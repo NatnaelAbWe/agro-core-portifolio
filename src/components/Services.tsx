@@ -13,6 +13,7 @@ import agentRepImg from "../assets/images/agent_rep_service_1777359911051.png";
 import regMgmtImg from "../assets/images/reg_mgmt_service_1777359929502.png";
 import stratConsultImg from "../assets/images/strat_consult_service_1777359945405.png";
 import marketResearchImg from "../assets/images/market_research_service_1777359962091.png";
+import { Behavior } from "@google/genai";
 
 interface ServiceCardProps {
   icon: LucideIcon;
@@ -173,7 +174,14 @@ export const Services = () => {
                   We tailor our regulatory and business support packages to your
                   specific industry needs.
                 </p>
-                <button className="w-full py-3 bg-emerald-500 hover:bg-emerald-400 text-white font-bold rounded-xl transition-all shadow-lg shadow-emerald-500/20">
+                <button
+                  className="w-full py-3 bg-emerald-500 hover:bg-emerald-400 text-white font-bold rounded-xl transition-all shadow-lg shadow-emerald-500/20"
+                  onClick={() =>
+                    document
+                      .getElementById("contact")
+                      ?.scrollIntoView({ behavior: "smooth" })
+                  }
+                >
                   Get In Touch
                 </button>
               </div>
